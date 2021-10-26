@@ -140,11 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DT.cpp" />
+    <ClCompile Include="Prime.cpp" />
     <ClCompile Include="taskRun1.cpp" />
     <ClCompile Include="taskRun2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DT.h" />
+    <ClInclude Include="HashTbls.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Prime.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

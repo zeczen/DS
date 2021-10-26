@@ -24,9 +24,21 @@
     <ClCompile Include="taskRun2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Prime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTbls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Prime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
