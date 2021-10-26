@@ -11,8 +11,6 @@ using std::endl;
 
 class DT
 {
-	friend class Answer;
-	friend class Node;
 
 	private:
 
@@ -20,8 +18,7 @@ class DT
 		class Node;
 
 		//Node: each node in the decision tree
-		class Node
-		{
+		class Node {
 			private:
 				string _value;
 				list<Answer*> _answersList;
