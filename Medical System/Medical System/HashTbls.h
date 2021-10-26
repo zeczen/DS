@@ -58,53 +58,38 @@ inline int HashTbls<T, K>::hash(K key, int i)
 template<class T, class K>
 inline int HashTbls<T, K>::search(K key)
 {
-	bool flag = false;
-	bool found = false;
-	int index = 0, i = 0;
+	int i = 0;
+	int index = hash(key, i++);
 
-	while (!flag)
+	while (this->_table[index].flag == STATE.Full && this->_table[index].key != key && i <= this->_size)
 	{
 		index = hash(key, i++);
-
-		if (this->_table[index].flag == STATE.Empty || i > this->_size)
-		{
-			index = -1;
-			flag = true;
-		}
-
-		else if (this->_table[index].key == key)
-		{
-			found = true;
-			flag = true;
-		}
 	}
+
+	this->_table[index].key == k ? index : -1;
 }
 
 template<class T, class K>
 inline void HashTbls<T, K>::insert(Item<K, T> item)
 {
-	bool flag = false;
-	int index = 0, i =0;
+	int i =0;
+	int index = hash(item.key, i++);
 
 	if (this->_usedSize == this->_size)
 	{
 		cout << "Table is full." << endl;
-		flag = true;
+		return;
 	}
 
-	while (!flag)
+	while (this->_table[index].flag == STATE.Full)
 	{
 		index = hash(item.key, i++);
-
-		if (this->_table[index].flag == STATE.Empty || this->_table[index].flag == STATE.Deleted)
-		{
-			this->_table[index].key = item.key;
-			this->_table[index].data = item.data;
-			this->_table[index].flag = item.flag;
-			this->_usedSize++;
-			flag = true;
-		}
 	}
+
+	this->_table[index].key = item.key;
+	this->_table[index].data = item.data;
+	this->_table[index].flag = item.flag;
+	this->_usedSize++;
 }
 
 template<class T, class K>
@@ -117,7 +102,7 @@ inline void HashTbls<T, K>::remove(Item<K, T> item)
 		this->_table[index].key = STATE.Deleted;
 		this->_usedSize--;
 	}
-
+	
 	else
 	{
 		cout << "Item not found." << endl;
