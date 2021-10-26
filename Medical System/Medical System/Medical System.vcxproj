@@ -140,7 +140,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DT.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="taskRun1.cpp" />
+    <ClCompile Include="taskRun2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DT.h" />
