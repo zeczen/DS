@@ -78,7 +78,7 @@ inline int HashTbls<T, K>::search(K key) {
 }
 
 template<class T, class K>
-inline void HashTbls<T, K>::insert(Item<T, K> *item) {
+    inline void HashTbls<T, K>::insert(Item<T, K> *item) {
     int i = 0;
     int index = this->hash(item->key, i++);
 
@@ -118,9 +118,9 @@ inline void HashTbls<T, K>::printTable() {
         //if (this->_table[i]->flag == Full)
         cout <<
              "Key:" << this->_table[i]->key <<
-             "\t\t" << "Data: " << this->_table[i]->data <<
-             "\t" << "State: " << this->_table[i]->flag <<
-             "\t" << "Index: " << i << endl;
+             "\t" << "Data: " << this->_table[i]->data <<
+             " " << "State: " << this->_table[i]->flag <<
+             " " << "Index: " << i << endl;
     }
     cout << endl;
 

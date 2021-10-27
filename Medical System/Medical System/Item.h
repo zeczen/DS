@@ -1,4 +1,11 @@
+
+
 #pragma once
+#include <iostream>
+#include <string>
+#include "Volunteer.h"
+
+using std::string;
 
 enum STATE {
     Empty, Full, Deleted
