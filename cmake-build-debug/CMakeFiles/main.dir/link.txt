@@ -1,3 +1,0 @@
-C:\Users\seyal\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5457.51\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\MAIN.dir/objects.a
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\ar.exe cr CMakeFiles\MAIN.dir/objects.a @CMakeFiles\MAIN.dir\objects1.rsp
-C:\PROGRA~1\MINGW-~1\X86_64~1.0-P\mingw64\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\MAIN.dir/objects.a -Wl,--no-whole-archive -o MAIN.exe -Wl,--out-implib,libMAIN.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\MAIN.dir\linklibs.rsp

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Item.h"
-#include "Prime.h"
 #include <vector>
 #include <iostream>
 
@@ -42,11 +41,14 @@ protected:
 
     int _size;
     int _usedSize;
+
+    unsigned int nextPrime(unsigned int n);
+    static bool isPrime(unsigned int n);
 };
 
 template<class T, class K>
 inline HashTbls<T, K>::HashTbls(int size, T t, K k) {
-    this->_size = Prime::nextPrime(size);
+    this->_size = this->nextPrime(size);
 
     for (std::size_t i = 0; i < this->_size; ++i) {
         this->_table.push_back(new Item<T, K>(t, k));
@@ -126,6 +128,43 @@ inline void HashTbls<T, K>::printTable() {
     for (int i = this->_size - 1; i >= 0; --i)
         if (this->_table[i]->flag == Full)
             cout << this->_table[i]->data << endl;
+}
+
+template<class T, class K>
+inline unsigned int HashTbls<T, K>::nextPrime(unsigned int n)
+{
+    while (true)
+    {
+        if (isPrime(n))
+        {
+            return n;
+        }
+        ++n;
+    }
+}
+
+template<class T, class K>
+inline bool HashTbls<T, K>::isPrime(unsigned int n)
+{
+    if (n < 4)
+    {
+        return false;
+    }
+
+    if (n % 2 == 0)
+    {
+        return false;
+    }
+
+    for (int i = 3; i * i < n; i += 2)
+    {
+        if (n % i == 0)
+        {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 template<class T, class K>
