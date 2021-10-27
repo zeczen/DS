@@ -12,9 +12,15 @@ public:
     void remove(Item<int, int>* item){
         this->_remove(item, 0, 0);
     }
-    int h1(int key, int i);
 
-    int h2(int key);
+    int h1(int key, int i) {
+        // h(k,i)=(h’(k)+i)mod m
+        int cell = ((key % this->_size) + i) % this->_size;
+        return cell;
+    }
+
+
+    int h2(int key) { return 1; }
 };
 
 

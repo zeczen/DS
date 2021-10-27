@@ -140,9 +140,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DT.cpp" />
-    <ClCompile Include="HashClient.cpp" />
-    <ClCompile Include="HashInt.cpp" />
-    <ClCompile Include="HashVolunteer.cpp" />
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="taskRun1.cpp" />
     <ClCompile Include="taskRun2.cpp" />
