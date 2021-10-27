@@ -24,12 +24,12 @@ void Stock::addVolunteer(Volunteer volunteer) {
 }
 
 void Stock::delVolunteer(Volunteer) {
-
+//TODO:
 }
 
 void Stock::addVolunteerToClient(Volunteer volunteer, Client client) {
     if(hashVolunteer->search(volunteer.phoneNumber) != -1) // exist
-        client.
+        client.addVolunteer(volunteer);
 }
 
 void Stock::listOfVolunteers(Client) {}
