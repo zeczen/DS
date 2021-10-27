@@ -23,6 +23,10 @@ public:
 
     int hash(K key, int i);
 
+    Item<T, K> *at(int index);
+
+    Item<T, K> *get(K k);
+
     int search(K key);
 
     int size();
@@ -69,7 +73,9 @@ inline int HashTbls<T, K>::search(K key) {
     int i = 0;
     int index = hash(key, i);
 
-    while (this->_table[index]->flag == Full && this->_table[index]->key != key && i / h2(key) <= this->_size) {
+    while ((this->_table[index]->flag == Full)
+           && (this->_table[index]->key != key)
+           && (i / h2(key) <= this->_size)) {
         i += h2(key);
         index = hash(key, i);
     }
@@ -78,7 +84,11 @@ inline int HashTbls<T, K>::search(K key) {
 }
 
 template<class T, class K>
-    inline void HashTbls<T, K>::insert(Item<T, K> *item) {
+inline Item<T, K> *HashTbls<T, K>::at(int index) { return this->_table[index]; }
+
+
+template<class T, class K>
+inline void HashTbls<T, K>::insert(Item<T, K> *item) {
     int i = 0;
     int index = this->hash(item->key, i++);
 
@@ -113,17 +123,16 @@ inline void HashTbls<T, K>::_remove(Item<T, K> *item, T t, K k) {
 
 template<class T, class K>
 inline void HashTbls<T, K>::printTable() {
-    cout << endl;
-    for (int i = 0; i < this->_size; ++i) {
-        //if (this->_table[i]->flag == Full)
-        cout <<
-             "Key:" << this->_table[i]->key <<
-             "\t" << "Data: " << this->_table[i]->data <<
-             " " << "State: " << this->_table[i]->flag <<
-             " " << "Index: " << i << endl;
-    }
-    cout << endl;
+    for (int i = this->_size - 1; i >= 0; --i)
+        if (this->_table[i]->flag == Full)
+            cout << this->_table[i]->data << endl;
+}
 
+template<class T, class K>
+Item<T, K> *HashTbls<T, K>::get(K k) {
+    int index = this->search(k);
+    if (index != -1)
+        return this->at(index);
 }
 
 template<class T, class K>

@@ -22,25 +22,6 @@ using std::string;
 using std::list;
 
 
-int _main() {
-    HashVolunteer *hashVolunteer = new HashVolunteer(10);
-    Item<Volunteer, string> *f = new Item<Volunteer, string>(Volunteer("eyal", "hacnasart", "522222222", "Tekoa"),
-                                                             "Eyal");
-    Item<Volunteer, string> *s = new Item<Volunteer, string>(Volunteer("david", "gat", "500000000", "Jerusalem"),
-                                                             "Liav");
-    Item<Volunteer, string> *t = new Item<Volunteer, string>(Volunteer("ariel", "patron", "588888888", "Natania"),
-                                                             "Ariel");
-    hashVolunteer->insert(f);
-    hashVolunteer->insert(s);
-    hashVolunteer->insert(t);
-    hashVolunteer->printTable();
-    hashVolunteer->remove(f);
-    hashVolunteer->printTable();
-
-    return 0;
-}
-
-
 int main() {
     char ch;
     Volunteer v;
@@ -60,6 +41,7 @@ int main() {
         cin >> ch;
         switch (ch) {
             case 'n':
+                cout << "Enter volunteer name phone address" << endl;
                 cin >> v;
                 stock.addVolunteer(v);
                 break;
@@ -68,6 +50,7 @@ int main() {
                 stock.delVolunteer(v);
                 break;
             case 'c':
+                cout << "please enter name and phone and address of client " << endl;
                 cin >> c;
                 stock.addClient(c);
                 break;
@@ -79,15 +62,21 @@ int main() {
             case '*':
                 cout << "enter client phone ";
                 cin >> c.phoneNumber;
+                cout << "The volunteers that helped to client " << c.phoneNumber << ": ";
                 stock.listOfVolunteers(c);
+                cout << endl;
+
                 break;
             case 'i':
                 cout << "enter volunteer name ";
                 cin >> v.name;
                 stock.listOfClients(v);
                 break;
+            case 'p':
+                stock.printHash();
+                break;
             case 'e':
-                cout << "bye ";
+                cout << "Bye";
                 break;
             default:
                 cout << "Error ";

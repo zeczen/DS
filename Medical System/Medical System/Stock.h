@@ -23,6 +23,8 @@ public:
 
     void addVolunteerToClient(Volunteer, Client);
 
+    void printHash();
+
     void listOfVolunteers(Client);
 
     void listOfClients(Volunteer);

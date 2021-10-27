@@ -11,7 +11,7 @@ public:
 
     HashVolunteer(int size) : HashTbls<Volunteer, string>::HashTbls(size, Volunteer(), "") {}
 
-    void remove(Item<Volunteer, string> *item) {
+    void remove(Item<Volunteer, string>* item) {
         this->_remove(item, Volunteer(), "");
     }
 
