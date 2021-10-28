@@ -1,88 +1,43 @@
-﻿  Stock.cpp
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashVolunteer.h(28,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashClient.h(29,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(53,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(50): message : while compiling class template member function 'HashTbls<Volunteer,std::string>::HashTbls(int,T,K)'
-          with
-          [
-              T=Volunteer,
-              K=std::string
-          ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashVolunteer.h(12): message : see reference to function template instantiation 'HashTbls<Volunteer,std::string>::HashTbls(int,T,K)' being compiled
-          with
-          [
-              T=Volunteer,
-              K=std::string
-          ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashVolunteer.h(9): message : see reference to class template instantiation 'HashTbls<Volunteer,std::string>' being compiled
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(159,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(148): message : while compiling class template member function 'bool HashTbls<Volunteer,std::string>::isPrime(unsigned int)'
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(138): message : see reference to function template instantiation 'bool HashTbls<Volunteer,std::string>::isPrime(unsigned int)' being compiled
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(69): message : while compiling class template member function 'int HashTbls<Volunteer,std::string>::hash(K,int)'
-          with
-          [
-              K=std::string
-          ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(76): message : see reference to function template instantiation 'int HashTbls<Volunteer,std::string>::hash(K,int)' being compiled
-          with
-          [
-              K=std::string
-          ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(50): message : while compiling class template member function 'HashTbls<Volunteer,std::string>::HashTbls(int,T,K)'
-          with
-          [
-              T=Volunteer,
-              K=std::string
-          ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashVolunteer.h(12): message : see reference to function template instantiation 'HashTbls<Volunteer,std::string>::HashTbls(int,T,K)' being compiled
-          with
-          [
-              T=Volunteer,
-              K=std::string
-          ]
-  taskRun2.cpp
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashVolunteer.h(28,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashClient.h(29,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(53,31): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(50): message : while compiling class template member function 'HashTbls<int,int>::HashTbls(int,T,K)'
+﻿  taskRun2.cpp
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashVolunteer.h(28,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashClient.h(29,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(53,31): warning C4018: '<': signed/unsigned mismatch
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(50): message : while compiling class template member function 'HashTbls<int,int>::HashTbls(int,T,K)'
           with
           [
               T=int,
               K=int
           ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashInt.h(10): message : see reference to function template instantiation 'HashTbls<int,int>::HashTbls(int,T,K)' being compiled
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashInt.h(10): message : see reference to function template instantiation 'HashTbls<int,int>::HashTbls(int,T,K)' being compiled
           with
           [
               T=int,
               K=int
           ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashInt.h(7): message : see reference to class template instantiation 'HashTbls<int,int>' being compiled
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(159,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(148): message : while compiling class template member function 'bool HashTbls<int,int>::isPrime(unsigned int)'
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(138): message : see reference to function template instantiation 'bool HashTbls<int,int>::isPrime(unsigned int)' being compiled
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(74): message : while compiling class template member function 'int HashTbls<int,int>::search(K)'
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashInt.h(7): message : see reference to class template instantiation 'HashTbls<int,int>' being compiled
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(159,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(148): message : while compiling class template member function 'bool HashTbls<int,int>::isPrime(unsigned int)'
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(138): message : see reference to function template instantiation 'bool HashTbls<int,int>::isPrime(unsigned int)' being compiled
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(74): message : while compiling class template member function 'int HashTbls<int,int>::search(K)'
           with
           [
               K=int
           ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(115): message : see reference to function template instantiation 'int HashTbls<int,int>::search(K)' being compiled
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(115): message : see reference to function template instantiation 'int HashTbls<int,int>::search(K)' being compiled
           with
           [
               K=int
           ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(50): message : while compiling class template member function 'HashTbls<int,int>::HashTbls(int,T,K)'
-          with
-          [
-              T=int,
-              K=int
-          ]
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashInt.h(10): message : see reference to function template instantiation 'HashTbls<int,int>::HashTbls(int,T,K)' being compiled
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashTbls.h(50): message : while compiling class template member function 'HashTbls<int,int>::HashTbls(int,T,K)'
           with
           [
               T=int,
               K=int
           ]
-  Generating Code...
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(175): warning C4715: 'HashTbls<Volunteer,std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::get': not all control paths return a value
-C:\Users\liavm\Desktop\DS\Medical System\Medical System\HashTbls.h(175): warning C4715: 'HashTbls<Client,std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::get': not all control paths return a value
-  Medical System.vcxproj -> C:\Users\liavm\Desktop\DS\Medical System\Debug\Medical System.exe
+C:\Users\seyal\source\repos\DS\Medical System\Medical System\HashInt.h(10): message : see reference to function template instantiation 'HashTbls<int,int>::HashTbls(int,T,K)' being compiled
+          with
+          [
+              T=int,
+              K=int
+          ]
+  Medical System.vcxproj -> C:\Users\seyal\Source\Repos\DS\Medical System\Debug\Medical System.exe
