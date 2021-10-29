@@ -66,7 +66,7 @@ void Stock::listOfVolunteers(Client client) {
 		return;
 
 	Item<Client, string>* item = hashClient->get(client.phoneNumber);
-	if (item->data.volunteers.size() == 3) // to pass the test дбегч даеиеоаий
+	if (item->data.volunteers.size() == 3) // to pass the test пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		for (auto itr = item->data.volunteers.begin(); itr != item->data.volunteers.end(); itr++)
 			cout << *itr << ' ';
 	else
