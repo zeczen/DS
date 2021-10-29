@@ -140,10 +140,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DT.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Stock.cpp" />
+    <ClCompile Include="taskRun1.cpp" />
+    <ClCompile Include="taskRun2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Client.h" />
     <ClInclude Include="DT.h" />
+    <ClInclude Include="HashClient.h" />
+    <ClInclude Include="HashInt.h" />
+    <ClInclude Include="HashTbls.h" />
+    <ClInclude Include="HashVolunteer.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Stock.h" />
+    <ClInclude Include="Volunteer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
