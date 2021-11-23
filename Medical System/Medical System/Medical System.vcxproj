@@ -143,6 +143,7 @@
     <ClCompile Include="Stock.cpp" />
     <ClCompile Include="taskRun1.cpp" />
     <ClCompile Include="taskRun2.cpp" />
+    <ClCompile Include="taskRun3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
