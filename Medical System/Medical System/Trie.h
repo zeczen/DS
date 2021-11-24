@@ -25,7 +25,7 @@ private:
 
     bool _del(const std::string, TrieNode *, int i = 0);
 
-    bool _search(const std::string, TrieNode *, int i = 0);
+    bool _search(const std::string, TrieNode *, bool prefix, int i = 0);
 
     int _printAutoSuggestions(TrieNode *, std::string);
 
@@ -35,7 +35,7 @@ public:
 
     bool del(const std::string);
 
-    bool search(const std::string);
+    bool search(const std::string, bool prefix=false);
 
     int printAutoSuggestions(const std::string);
 

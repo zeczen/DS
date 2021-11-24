@@ -25,12 +25,12 @@ int getChar(const int a) {
 // const string Trie::ALPHABET = 26;
 
 Trie::TrieNode::TrieNode() {
-    this->endWord = endWord;
+    this->endWord = false;
     this->parent = nullptr; // this is the root node
 }
 
-Trie::TrieNode::TrieNode(TrieNode *parent, bool endWord, int i) {
-    this->endWord = endWord;
+Trie::TrieNode::TrieNode(TrieNode *parent, bool isEndWord, int i) {
+    this->endWord = isEndWord;
     this->parent = parent;
 
     if (parent->children[i] == nullptr) {
@@ -62,7 +62,7 @@ void Trie::_insert(const std::string str, TrieNode *trie, int i) {
         return;
     }
     int index = getNum(str.at(i));
-    if (trie->children[i] == nullptr) {
+    if (trie->children[index] == nullptr) {
         // if we need to create new TrieNode
         TrieNode *node = new TrieNode(trie, false, index);
         _insert(str, node, i + 1);
@@ -95,10 +95,10 @@ bool Trie::_del(const std::string str, TrieNode *trie, int i) {
 
 }
 
-bool Trie::_search(const std::string str, TrieNode *trie, int i) {
+bool Trie::_search(const std::string str, TrieNode *trie, bool prefix, int i) {
     // O(n)
     if (i == str.length()) {
-        if (_trie->endWord)
+        if (prefix || trie->endWord)
             return true;
         else
             return false;
@@ -109,18 +109,20 @@ bool Trie::_search(const std::string str, TrieNode *trie, int i) {
     if (trie->children[index] == nullptr)
         return false;
     else
-        return _search(str, trie->children[index], i + 1);
+        return _search(str, trie->children[index], prefix, i + 1);
 }
 
 int Trie::_printAutoSuggestions(TrieNode *trie, std::string str) {
     int num = 0; // how many children does this node have
-
-    std::cout << str << std::endl;
+    if (trie->endWord == true)
+        std::cout << str << std::endl;
     for (int i = 0; i < ALPHABET; i++)
         if (trie->children[i] != nullptr) {
-            num++;
             char letter = getChar(i);
             num += _printAutoSuggestions(trie->children[i], str + letter);
+            if (trie->children[i]->endWord == true) {
+                num++;
+            }
         }
     return num;
 }
@@ -140,12 +142,12 @@ bool Trie::del(const std::string str) {
     return _del(str, _trie);
 }
 
-bool Trie::search(const std::string str) {
-    return _search(str, _trie);
+bool Trie::search(const std::string str, bool prefix) {
+    return _search(str, _trie, prefix);
 }
 
 int Trie::printAutoSuggestions(const std::string str) {
-    if (!search(str))
+    if (!search(str, true))
         return 0;
     TrieNode *node = this->_trie;
     for (int i = 0; i < str.length(); i++)
