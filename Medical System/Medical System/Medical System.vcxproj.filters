@@ -15,15 +15,45 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="taskRun1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DT.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="taskRun2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashTbls.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Client.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashInt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HashVolunteer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Volunteer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
