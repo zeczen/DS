@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/seyal/Documents/C++/DS/Medical System/Medical System/Trie.cpp
+Trie.h
+C:/Users/seyal/Documents/C++/DS/Medical System/Medical System/Trie.h
+string
+-
+iostream
+-
+
+C:/Users/seyal/Documents/C++/DS/Medical System/Medical System/Trie.h
+string
+-
+
