@@ -4,7 +4,10 @@
 
 
 int getNum(const char chr) {
-    return int(chr) - 97;
+    if(!(97 <= (int)chr && (int)chr <= 122))
+        throw("ERROR: char not in range");
+
+    return ((int)chr) - 97;
     // getNum(a): 0
     // getNum(b): 1
     // getNum(c): 2
@@ -12,8 +15,11 @@ int getNum(const char chr) {
     // getNum(z): 25
 }
 
-int getChar(const int a) {
-    return char(a + 97);
+char getChar(const int a) {
+    if(!(0 <= a && a <= 26))
+        throw("ERROR: int not in range");
+
+    return (char)a + 97;
     // getChar(0): a
     // getChar(1): b
     // getChar(2): c
@@ -83,7 +89,10 @@ bool Trie::_del(const std::string str, TrieNode *trie, int i) {
         return true;
     }
     int index = getNum(str.at(i));
-    _del(str, trie->children[index], i + 1);
+    bool finish = _del(str, trie->children[index], i + 1);
+
+    if (finish)
+        return true;
 
     if (trie->endWord == false && trie->children[index]->childrenCount == 1) {
         // if the only child of that node is the one we delete
@@ -114,8 +123,10 @@ bool Trie::_search(const std::string str, TrieNode *trie, bool prefix, int i) {
 
 int Trie::_printAutoSuggestions(TrieNode *trie, std::string str) {
     int num = 0; // how many children does this node have
-    if (trie->endWord == true)
+    if (trie->endWord == true) {
+        num++;
         std::cout << str << std::endl;
+    }
     for (int i = 0; i < ALPHABET; i++)
         if (trie->children[i] != nullptr) {
             char letter = getChar(i);
