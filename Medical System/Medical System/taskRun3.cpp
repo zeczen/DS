@@ -10,7 +10,7 @@ using namespace std;
 
 #include <list>
 #include <string>
-#include "trie.h"
+#include "Trie.h"
 
 int main() {
 

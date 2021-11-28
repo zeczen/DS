@@ -13,8 +13,8 @@ protected:
         TrieNode(TrieNode *, bool, int i);
 
         TrieNode *parent;
-        TrieNode *children[ALPHABET] = {0};
-        int childrenCount = 0;
+        TrieNode *children[ALPHABET];
+        int childrenCount;
         bool endWord;
 
     };

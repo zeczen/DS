@@ -31,15 +31,17 @@ char getChar(const int a) {
 // const string Trie::ALPHABET = 26;
 
 Trie::TrieNode::TrieNode() {
+    this->childrenCount = 0;
     this->endWord = false;
-    this->parent = nullptr; // this is the root node
+    this->parent = NULL; // this is the root node
 }
 
 Trie::TrieNode::TrieNode(TrieNode *parent, bool isEndWord, int i) {
+    this->childrenCount = 0;
     this->endWord = isEndWord;
     this->parent = parent;
 
-    if (parent->children[i] == nullptr) {
+    if (parent->children[i] == NULL) {
         parent->childrenCount++;
         parent->children[i] = this;
 
@@ -68,7 +70,7 @@ void Trie::_insert(const std::string str, TrieNode *trie, int i) {
         return;
     }
     int index = getNum(str.at(i));
-    if (trie->children[index] == nullptr) {
+    if (trie->children[index] == NULL) {
         // if we need to create new TrieNode
         TrieNode *node = new TrieNode(trie, false, index);
         _insert(str, node, i + 1);
@@ -98,7 +100,7 @@ bool Trie::_del(const std::string str, TrieNode *trie, int i) {
         // if the only child of that node is the one we delete
         delete trie->children[index];
         trie->childrenCount--;
-        trie->children[index] = nullptr;
+        trie->children[index] = NULL;
     }
     return true;
 
@@ -115,7 +117,7 @@ bool Trie::_search(const std::string str, TrieNode *trie, bool prefix, int i) {
     // else
 
     int index = getNum(str.at(i));
-    if (trie->children[index] == nullptr)
+    if (trie->children[index] == NULL)
         return false;
     else
         return _search(str, trie->children[index], prefix, i + 1);
@@ -128,7 +130,7 @@ int Trie::_printAutoSuggestions(TrieNode *trie, std::string str) {
         std::cout << str << std::endl;
     }
     for (int i = 0; i < ALPHABET; i++)
-        if (trie->children[i] != nullptr) {
+        if (trie->children[i] != NULL) {
             char letter = getChar(i);
             num += _printAutoSuggestions(trie->children[i], str + letter);
             if (trie->children[i]->endWord == true) {
