@@ -9,9 +9,11 @@ protected:
 
     class TrieNode {
     public:
+        //constructors
         TrieNode();
         TrieNode(TrieNode *, bool, int i);
 
+        //private variables of the inside class
         TrieNode *parent;
         TrieNode *children[ALPHABET];
         int childrenCount;
@@ -19,8 +21,10 @@ protected:
 
     };
 
-    TrieNode *_trie;
+    TrieNode *_trie; //pointer to the current node.
 private:
+    //helpful recursive functions.
+
     void _insert(const std::string, TrieNode *, int i = 0);
 
     bool _del(const std::string, TrieNode *, int i = 0);
@@ -30,7 +34,11 @@ private:
     int _printAutoSuggestions(TrieNode *, std::string);
 
 public:
+    //constructor
     Trie();
+
+    //addtional public function
+
     void insert(std::string);
 
     bool del(const std::string);

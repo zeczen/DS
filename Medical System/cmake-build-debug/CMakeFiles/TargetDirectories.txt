@@ -1,3 +1,0 @@
-C:/Users/seyal/Documents/C++/DS/Medical System/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/seyal/Documents/C++/DS/Medical System/cmake-build-debug/CMakeFiles/DS.dir
-C:/Users/seyal/Documents/C++/DS/Medical System/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,1 +1,5 @@
-﻿  Medical System.vcxproj -> C:\Users\liavm\Desktop\DS\Medical System\Debug\Medical System.exe
+﻿  Trie.cpp
+C:\Users\liavm\Desktop\DS\Medical System\Medical System\Trie.cpp(245,23): warning C4018: '<': signed/unsigned mismatch
+  taskRun3.cpp
+  Generating Code...
+  Medical System.vcxproj -> C:\Users\liavm\Desktop\DS\Medical System\Debug\Medical System.exe
