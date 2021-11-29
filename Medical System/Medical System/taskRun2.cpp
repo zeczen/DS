@@ -21,7 +21,7 @@ using std::string;
 using std::list;
 
 
-int main() {
+int main1() {
     char ch;
     Volunteer v;
     Client c;

@@ -144,6 +144,7 @@
     <ClCompile Include="taskRun1.cpp" />
     <ClCompile Include="taskRun2.cpp" />
     <ClCompile Include="taskRun3.cpp" />
+    <ClCompile Include="Trie.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="HashVolunteer.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Stock.h" />
+    <ClInclude Include="Trie.h" />
     <ClInclude Include="Volunteer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
