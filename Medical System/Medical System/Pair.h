@@ -13,6 +13,14 @@ public:
         this->count = i;
     }
 
+    bool operator<(const Pair p) {
+        return this->count > p.count;
+    }
+
+    bool operator>(const Pair p) {
+        return this->count < p.count;
+    }
+
     std::string path;
     char chr;
     int count;

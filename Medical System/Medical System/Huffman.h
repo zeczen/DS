@@ -12,7 +12,7 @@ public:
 
     HuffmanTree();
 
-    BinaryTree<Pair> *buildHuffman(std::string word);
+    BinaryTree<Pair> buildHuffman(std::string word);
 
 private:
 };

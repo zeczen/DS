@@ -26,10 +26,10 @@ int main() {
 
                 std::cout << "enter the original text" << std::endl;
                 std::cin >> word;
-                BinaryTree<Pair> *encoded = t->buildHuffman(word);
+                BinaryTree<Pair> encoded = t->buildHuffman(word);
                 // Build Huffman tree given the data inside "word".
                 // Then find the code of each letter.
-                std::vector<Pair> leaves = encoded->getLeaves();
+                std::vector<Pair> leaves = encoded.getLeaves();
                 std::cout << leaves.size();
                 // Then print the output - number of leaves,
 
