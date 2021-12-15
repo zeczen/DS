@@ -9,7 +9,7 @@ public:
 
     HashInt(int size) : HashTbls<int, int>::HashTbls(size, 0, 0) {}
 
-    void remove(Item<int, int>* item){
+    void remove(Item<int, int> *item) {
         this->_remove(item, 0, 0);
     }
 
