@@ -9,7 +9,10 @@
 template<typename T>
 class BinaryTree {
 public:
-    BinaryTree() = default;
+
+    BinaryTree(){
+        this->root = NULL;
+    }
 
     BinaryTree(const BinaryTree &bt) {
         if (NULL != bt.root) {
@@ -26,6 +29,7 @@ public:
         root->rightNode = NULL;*/
     }
 
+
     BinaryTree(const T &theElement, const BinaryTree &l, const BinaryTree &r) {
         root = new BinaryNode(theElement, l.root, r.root);
     }
@@ -33,6 +37,12 @@ public:
     ~BinaryTree() {
         makeEmpty();
         /* root->~BinaryNode();*/
+    }
+
+    BinaryTree<T> clone() const{
+        BinaryTree<T> bt = BinaryTree<T>();
+        bt.root = clone(this->root);
+        return bt;
     }
 
     T getRoot() {
@@ -91,7 +101,7 @@ private:
 
     BinaryNode *root = NULL;
 
-    BinaryNode *clone(const BinaryNode *r) {
+    BinaryNode *clone(const BinaryNode *r) const {
         if (r == NULL) {
             return NULL;
         } else {

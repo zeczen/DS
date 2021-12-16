@@ -21,7 +21,6 @@ add_executable(DS
         Volunteer.h
         Huffman.cpp
         Huffman.h
-        BinaryTree.cpp
         BinaryTree.h
-
-        Pair.h)
+        Pair.h updatable_priority_queue.h
+        )
