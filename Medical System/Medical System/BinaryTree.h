@@ -22,12 +22,14 @@ public:
         }
     }
 
-    BinaryTree(const T &theElement) {
-        root = new BinaryNode(theElement);
-
-
+    BinaryTree(std::string structure, std::vector<T> elements, T node) {
+        int i = 0;
+        buildTree(structure, elements, node, this->root, i);
     }
 
+    BinaryTree(const T &theElement) {
+        root = new BinaryNode(theElement);
+    }
 
     BinaryTree(const T &theElement, const BinaryTree *l, const BinaryTree *r) {
 
@@ -59,6 +61,10 @@ public:
 
     void remove(const T &theElement) {
         remove(theElement, root);
+    }
+
+    std::string getStructure() {
+        return getStructure(this->root);
     }
 
     void setPaths() const {
@@ -129,9 +135,22 @@ private:
         }
     }
 
+    void buildTree(std::string structure, std::vector<T> &elements, T node, BinaryNode *&t, int &i) {
+        if (structure.length() == i)
+            return;
+        else if (structure.at(i) == '1') {
+            t = new BinaryNode(elements[0]);
+            elements.erase(elements.begin());
+        } else if (structure.at(i) == '0') {
+            t = new BinaryNode(node);
+            buildTree(structure, elements, node, t->leftNode, ++i);
+            buildTree(structure, elements, node, t->rightNode, ++i);
+        } else {
+            throw "ERROR";
+        }
+    }
+
     void makeEmpty(BinaryNode *&t) {
-
-
         if (NULL != t) {
             makeEmpty(t->leftNode);
             makeEmpty(t->rightNode);
@@ -153,6 +172,18 @@ private:
         }
 
         return vec;
+    }
+
+    std::string getStructure(BinaryNode *bNode, std::string path = "") const {
+        if (bNode->leftNode == NULL && bNode->rightNode == NULL)
+            return path + "1";
+        if (bNode->leftNode != NULL) {
+            path = getStructure(bNode->leftNode, path + "0");
+        }
+        if (bNode->rightNode != NULL) {
+            path = getStructure(bNode->rightNode, path);
+        }
+        return path;
     }
 
     void setPaths(BinaryNode *bNode, std::string path) const {

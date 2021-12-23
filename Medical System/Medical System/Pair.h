@@ -10,6 +10,11 @@ public:
         this->count = i;
     }
 
+    Pair(char c) {
+        this->path = "";
+        this->chr = c;
+    }
+
     Pair(int i) {
         this->path = "";
         this->chr = '-';
@@ -23,7 +28,6 @@ public:
     bool operator>(const Pair p) {
         return this->count < p.count;
     }
-
 
 
     std::string path;

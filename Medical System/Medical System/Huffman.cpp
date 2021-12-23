@@ -18,15 +18,11 @@ bool compare(BinaryTree<Pair> *tree1, BinaryTree<Pair> *tree2) {
 }
 
 BinaryTree<Pair> *HuffmanTree::buildHuffman(std::string word) {
-    /* TODO:
-     * How to define huffmanPQ: if type of <BinaryTree<Pair*> > we get garbage value,
-     * if type of <BinaryTree<Pair*> *> the '<' and '>' operators not called on BinaryTree type but on the address of them in the memory
-     * !!!
-     */
     MaxHeap<BinaryTree<Pair> *> huffmanPQ(&compare);
     HashInt *hashInt;
     hashInt = new HashInt(word.length());
-    for (char c: word) {
+    for (std::string::iterator itr = word.begin(); itr != word.end(); ++itr) {
+        char c = *itr;
         if (hashInt->search(c) == -1)
             // the first occurrence of the current character
         {
@@ -39,14 +35,14 @@ BinaryTree<Pair> *HuffmanTree::buildHuffman(std::string word) {
     }
 
     while (huffmanPQ.size() >= 2) {
-        auto max1 = huffmanPQ.top();
+        BinaryTree<Pair> *max1 = huffmanPQ.top();
         huffmanPQ.pop();
-        auto max2 = huffmanPQ.top();
+        BinaryTree<Pair> *max2 = huffmanPQ.top();
         huffmanPQ.pop();
 
 
         int sum = max1->getRoot().count + max2->getRoot().count;
-        huffmanPQ.push(new BinaryTree<Pair>(Pair(sum), max2, max1));
+        huffmanPQ.push(new BinaryTree<Pair>(Pair(sum), max1, max2));
 
     }
 
