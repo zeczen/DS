@@ -26,17 +26,24 @@ int main() {
 
                 std::cout << "enter the original text" << std::endl;
                 std::cin >> word;
-                BinaryTree<Pair> encoded = t->buildHuffman(word);
+                BinaryTree<Pair> *encoded = t->buildHuffman(word);
                 // Build Huffman tree given the data inside "word".
                 // Then find the code of each letter.
-                std::vector<Pair> leaves = encoded.getLeaves();
-                std::cout << leaves.size();
+                std::vector<Pair> leaves = encoded->getLeaves();
+                std::cout << leaves.size() << std::endl;
                 // Then print the output - number of leaves,
 
                 // order of letters,
+                for (Pair& leave : leaves) {
+                    std::cout << leave.chr;
+                }
+                std::cout << std::endl;
+                for (Pair& leave : leaves) {
+                    std::cout << leave.path;
+                }
                 // tree structure and the encoded text -
                 // according to the explanation in the exercise.
-
+                delete encoded;
                 break;
             }
             case 'D': {

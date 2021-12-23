@@ -12,9 +12,9 @@ add_executable(DS
         Item.h
         Stock.h
         Stock.cpp
-#        taskRun1.cpp
-#        taskRun2.cpp
-#        taskRun3.cpp
+        #        taskRun1.cpp
+        #        taskRun2.cpp
+        #        taskRun3.cpp
         taskRun4.cpp
         Trie.h
         Trie.cpp
@@ -22,5 +22,6 @@ add_executable(DS
         Huffman.cpp
         Huffman.h
         BinaryTree.h
-        Pair.h updatable_priority_queue.h
+        Pair.h
+        PriorityQueue.h
         )

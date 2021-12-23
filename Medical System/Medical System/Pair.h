@@ -5,11 +5,14 @@
 class Pair {
 public:
     Pair(char c, int i) {
+        this->path = "";
         this->chr = c;
         this->count = i;
     }
 
     Pair(int i) {
+        this->path = "";
+        this->chr = '-';
         this->count = i;
     }
 
@@ -20,6 +23,8 @@ public:
     bool operator>(const Pair p) {
         return this->count < p.count;
     }
+
+
 
     std::string path;
     char chr;
