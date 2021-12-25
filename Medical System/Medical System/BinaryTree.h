@@ -3,37 +3,44 @@
 #define BINARYTREE_BINARYTREE_H_H
 
 #include <iostream>
-#include<vector>
-#include"Pair.h"
+#include <vector>
+#include "Pair.h"
 
 template<typename T>
 class BinaryTree {
 public:
-    BinaryTree() = default;
+
+    BinaryTree() {
+        this->root = NULL;
+    }
 
     BinaryTree(const BinaryTree &bt) {
         if (NULL != bt.root) {
-            this->root = clone(bt.root);
+            *this = bt;
         } else {
             this->root = NULL;
         }
     }
 
-    BinaryTree(const T &theElement) {
-        root = new BinaryNode(theElement);
-        /*root->element = theElement;
-        root->leftNode = NULL;
-        root->rightNode = NULL;*/
+    BinaryTree(std::string structure, std::vector<T> elements, T node) {
+        int i = 0;
+        buildTree(structure, elements, node, this->root, i);
     }
 
-    BinaryTree(const T &theElement, const BinaryTree &l, const BinaryTree &r) {
-        root = new BinaryNode(theElement, l.root, r.root);
+    BinaryTree(const T &theElement) {
+        root = new BinaryNode(theElement);
+    }
+
+    BinaryTree(const T &theElement, const BinaryTree *l, const BinaryTree *r) {
+
+        root = new BinaryNode(theElement, l->root, r->root);
     }
 
     ~BinaryTree() {
         makeEmpty();
         /* root->~BinaryNode();*/
     }
+
 
     T getRoot() {
         return this->root->element;
@@ -54,6 +61,10 @@ public:
 
     void remove(const T &theElement) {
         remove(theElement, root);
+    }
+
+    std::string getStructure() {
+        return getStructure(this->root);
     }
 
     void setPaths() const {
@@ -91,13 +102,6 @@ private:
 
     BinaryNode *root = NULL;
 
-    BinaryNode *clone(const BinaryNode *r) {
-        if (r == NULL) {
-            return NULL;
-        } else {
-            return new BinaryNode(r->element, clone(r->leftNode), clone(r->rightNode));
-        }
-    }
 
     void insert(const T &theElement, BinaryNode *&t) {
         if (NULL == t) {
@@ -118,7 +122,7 @@ private:
                 remove(t->leftNode);
             } else if (theElement > t->element) {
                 remove(t->rightNode);
-            } else if (NULL != t->leftNode && NULL != t->rightNode) {  //需要删除的节点两个儿子
+            } else if (NULL != t->leftNode && NULL != t->rightNode) {
 
                 t->element = findMin(t->rightNode)->element;
                 remove(t->element, t->rightNode);
@@ -126,7 +130,23 @@ private:
                 BinaryNode *oldNode = t;
                 t = (NULL != t->leftNode) ? t->leftNode : t->rightNode;
                 delete oldNode;
+                oldNode = NULL;
             }
+        }
+    }
+
+    void buildTree(std::string structure, std::vector<T> &elements, T node, BinaryNode *&t, int &i) {
+        if (structure.length() == i)
+            return;
+        else if (structure.at(i) == '1') {
+            t = new BinaryNode(elements[0]);
+            elements.erase(elements.begin());
+        } else if (structure.at(i) == '0') {
+            t = new BinaryNode(node);
+            buildTree(structure, elements, node, t->leftNode, ++i);
+            buildTree(structure, elements, node, t->rightNode, ++i);
+        } else {
+            throw "ERROR";
         }
     }
 
@@ -139,32 +159,47 @@ private:
         t = NULL;
     }
 
-    std::vector<T> getLeaves(BinaryNode *bNode, std::vector<T> vec) {
+    std::vector<T> getLeaves(BinaryNode *bNode, std::vector<T> &vec) {
         if (bNode->leftNode == NULL && bNode->rightNode == NULL) {
             vec.push_back(bNode->element);
             return vec;
         }
         if (bNode->leftNode != NULL) {
             std::vector<T> leftLeaves = getLeaves(bNode->leftNode, vec);
-            vec.insert(vec.end(), leftLeaves.begin(), leftLeaves.end());
         }
         if (bNode->rightNode != NULL) {
             std::vector<T> rightLeaves = getLeaves(bNode->rightNode, vec);
-            vec.insert(vec.end(), rightLeaves.begin(), rightLeaves.end());
         }
+
         return vec;
     }
 
-    void setPaths(BinaryNode *bNode, std::string path) const {
+    std::string getStructure(BinaryNode *bNode, std::string path = "") const {
+        if (bNode->leftNode == NULL && bNode->rightNode == NULL)
+            return path + "1";
         if (bNode->leftNode != NULL) {
-            setPaths(bNode->leftNode, path.append(reinterpret_cast<const char *>('0')));
+            path = getStructure(bNode->leftNode, path + "0");
         }
         if (bNode->rightNode != NULL) {
-            setPaths(bNode->rightNode, path.append(reinterpret_cast<const char *>('1')));
+            path = getStructure(bNode->rightNode, path);
         }
+        return path;
+    }
+
+    void setPaths(BinaryNode *bNode, std::string path) const {
+        const std::string ZERO = "0";
+        const std::string ONE = "1";
+
         if (bNode->leftNode == NULL && bNode->rightNode == NULL) {
             bNode->element.path = path;
         }
+        if (bNode->rightNode != NULL) {
+            setPaths(bNode->rightNode, path + ONE);
+        }
+        if (bNode->leftNode != NULL) {
+            setPaths(bNode->leftNode, path + ZERO);
+        }
+
 
     }
 

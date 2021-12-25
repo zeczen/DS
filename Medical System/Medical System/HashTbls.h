@@ -109,7 +109,7 @@ inline void HashTbls<T, K>::insert(Item<T, K> *item) {
     }
 
 
-    while (this->_table[index] == nullptr ||
+    while (this->_table[index] == NULL ||
            this->_table[index]->flag == Full) {
         index = hash(item->key, i++);
     }
