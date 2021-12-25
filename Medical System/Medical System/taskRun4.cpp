@@ -82,7 +82,6 @@ int main() {
                 if (!checkInput(numLeaves, treeStructure, letters)) {
                     cout << "ERROR" << endl;
                     cout << "bye" << endl;
-
                     return 0;
                 }
 
