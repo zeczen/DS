@@ -13,7 +13,9 @@
 #include "Pair.h"
 #include <string>
 
-bool checkInput(int ones, std::string tree, std::string letters) {
+using namespace std;
+
+bool checkInput(int ones, string tree, string letters) {
     int j = 0;
     for (int i = 0; i <= tree[i]; i++) {
         if (tree[i] == '1') {
@@ -27,118 +29,78 @@ int main() {
     char choice;
 
 
-    HuffmanTree *t;
-    std::cout << "enter E to encode a text\n";
-    std::cout << "enter D to decode a text\n";
-    std::cout << "enter X to exit\n";
+    HuffmanTree *t = new HuffmanTree();
+    cout << "enter E to encode a text\n";
+    cout << "enter D to decode a text\n";
+    cout << "enter X to exit\n";
 
 
     do {
-        std::cin >> choice;
+        cin >> choice;
         switch (choice) {
             case 'E': {
-                std::string word;
+                string word;
 
-                std::cout << "enter the original text" << std::endl;
-                std::cin >> word;
+                cout << "enter the original text" << endl;
+                cin >> word;
 
-                std::cout << "The encoded string is" << std::endl;
+                cout << "The encoded string is" << endl;
 
-                BinaryTree<Pair> *encoded = t->buildHuffman(
-                        word);  // Build Huffman tree given the data inside "word".
-                std::vector<Pair> leaves = encoded->getLeaves();
-                std::cout << leaves.size() << std::endl;
+                t->buildHuffman(word);  // Build Huffman tree given the data
+                string letters = t->getLetters();
+                cout << letters.size() << endl;
 
-                // order of letters,
-                for (std::vector<Pair>::iterator itr = leaves.begin(); itr != leaves.end(); ++itr) {
-                    std::cout << itr->chr;
-                }
-                std::cout << std::endl << encoded->getStructure() << std::endl;
+                // print the order of letters
+                cout << letters << endl;
 
-                for (std::string::iterator itr = word.begin(); itr != word.end(); ++itr) {
-                    char let = *itr;
-                    for (std::vector<Pair>::iterator itr = leaves.begin(); itr != leaves.end(); ++itr) {
-                        if (itr->chr == let) {
-                            std::cout << itr->path;
-                            break;
-                        }
-                    }
-                }
-                std::cout << std::endl;
+                // print the tree structure
+                cout << endl << t->treeStructure() << endl;
 
-                delete encoded;
+                // print the encoded message
+                cout << endl << t->encode(word) << endl;
+
                 break;
             }
             case 'D': {
                 int numLeaves;
-                std::string letters;
-                std::string treeStructure;
-                std::string encodedText;
+                string letters;
+                string treeStructure;
+                string encodedText;
 
-                std::cout << "enter n" << std::endl;
-                std::cin >> numLeaves;
+                cout << "enter n" << endl;
+                cin >> numLeaves;
 
-                std::cout << "enter the letters" << std::endl;
-                std::cin >> letters;
+                cout << "enter the letters" << endl;
+                cin >> letters;
 
-                std::cout << "enter the encoded structure" << std::endl;
-                std::cin >> treeStructure;
+                cout << "enter the encoded structure" << endl;
+                cin >> treeStructure;
 
-                std::cout << "enter the encoded text" << std::endl;
-                std::cin >> encodedText;
+                cout << "enter the encoded text" << endl;
+                cin >> encodedText;
 
                 if (!checkInput(numLeaves, treeStructure, letters)) {
-                    std::cout << "ERROR" << std::endl;
-                    std::cout << "bye" << std::endl;
+                    cout << "ERROR" << endl;
+                    cout << "bye" << endl;
 
                     return 0;
                 }
 
-                std::cout << "The decoded string is" << std::endl;
+                cout << "The decoded string is" << endl;
 
-                std::vector<Pair> elements;
-                for (std::string::iterator itr = letters.begin(); itr != letters.end(); ++itr) {
-                    char let = *itr;
-                    elements.push_back(Pair(let));
-                }
-                BinaryTree<Pair> *bt = new BinaryTree<Pair>(treeStructure, elements, Pair(0));
-                bt->setPaths();
+                t->buildHuffman(treeStructure, letters);
 
-                std::vector<Pair> leaves = bt->getLeaves();
+                cout << t->decode(encodedText) << endl;
 
-                std::string word = "";
-
-
-                for (std::string::iterator itr = encodedText.begin(); itr != encodedText.end(); ++itr) {
-                    char let = *itr;
-                    word.push_back(let);
-                    bool isComplete = false;
-                    char chr;
-                    for (std::vector<Pair>::iterator itr = leaves.begin(); itr != leaves.end(); ++itr) {
-                        Pair &leave = *itr;
-                        if (leave.path == word) {
-                            isComplete = true;
-                            chr = leave.chr;
-                            break;
-                        }
-                    }
-                    if (!isComplete) {
-                        continue;
-                    }
-
-                    // we found the word
-                    std::cout << chr;
-                    word = "";
-                }
-                std::cout << std::endl;
-
-                delete bt;
+                break;
             }
         }
 
     } while (choice != 'X');
 
-    std::cout << "bye" << std::endl;
+    delete t;
+
+    cout << "bye" << endl;
 
     return 0;
 }

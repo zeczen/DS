@@ -7,14 +7,31 @@
 #include "Pair.h"
 #include<string.h>
 
+using namespace std;
+
 class HuffmanTree {
 public:
 
     HuffmanTree();
 
-    BinaryTree<Pair>* buildHuffman(std::string word);
+    ~HuffmanTree();
+
+    string getLetters();
+
+    string treeStructure();
+
+    string encode(string text);
+
+    string decode(string encodedText);
+
+    void buildHuffman(string);
+
+    void buildHuffman(string treeStructure, string letters);
 
 private:
+    vector<Pair> getLeaves();
+
+    BinaryTree<Pair> *tree;
 };
 
 
