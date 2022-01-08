@@ -12,10 +12,11 @@ add_executable(DS
         Item.h
         Stock.h
         Stock.cpp
-        #        taskRun1.cpp
-        #        taskRun2.cpp
-        #        taskRun3.cpp
-        taskRun4.cpp
+#        taskRun1.cpp
+#        taskRun2.cpp
+#        taskRun3.cpp
+#        taskRun4.cpp
+        taskRun5.cpp
         Trie.h
         Trie.cpp
         Volunteer.h
@@ -24,4 +25,7 @@ add_executable(DS
         BinaryTree.h
         Pair.h
         PriorityQueue.h
-        )
+        Vertex.h
+        Edge.h
+
+        Graph.h)
