@@ -10,18 +10,13 @@ class Vertex;
 
 class Edge {
 public:
-    Edge() : dest(NULL) {}
-
-    Edge(Vertex *d) : dest(d) {}
+    Edge(string d) : dest(d) {}
 
     bool operator==(const Edge &other) const {
         return this->dest == other.dest;
     }
 
-    Vertex *getV() const { return this->dest; }
-
-private:
-    Vertex *dest;
+    string dest;
 };
 
 #endif //TEST_EDGE_H

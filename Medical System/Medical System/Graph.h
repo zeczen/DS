@@ -35,9 +35,18 @@ public:
         Vertex *va = this->_find(a);
         Vertex *vb = this->_find(b);
 
-        if (
-                (va != NULL) &&
-                (vb != NULL)) {
+        bool contains = false;
+        if (va != NULL)
+            for (int i = 0; i != va->getEdges().size(); i++) {
+                if (va->getEdges()[i].dest == b) {
+                    contains = true;
+                    break;
+                }
+            }
+
+        if ((!contains) &&
+            (va != NULL) &&
+            (vb != NULL)) {
             va->addEdge(vb);
             return true;
         }
@@ -58,17 +67,21 @@ public:
             (*itr)->print();
         }
     }
-    static bool compareVertex(Vertex* a, Vertex* b){return a->getF() > b->getF();}
+
+    static bool compareFinish(Vertex *a, Vertex *b) { return a->getF() > b->getF(); }
+
+    static bool compareKeys(Vertex *a, Vertex *b) { return a->getKey() < b->getKey(); }
 
     const string topologicalSort() {
         string res = "order: ";
+        sort(this->graph.begin(), this->graph.end(), compareKeys);
 
         this->DFS();
 
-        sort(this->graph.begin(), this->graph.end(), compareVertex);
+        sort(this->graph.begin(), this->graph.end(), compareFinish);
 
         for (auto itr = this->graph.begin(); itr != this->graph.end(); itr++) {
-            res +=  (*itr)->getKey() + ' ';
+            res += (*itr)->getKey() + ' ';
         }
         return res;
 
@@ -87,14 +100,15 @@ public:
     }
 
     void _DFS(Vertex *v, Vertex *pi = NULL) {
-        v->discover(pi, timer++);
-        for (auto i = v->getEdges().begin(); i != v->getEdges().end(); ++i) {
-            Vertex *n = (*i).getV();
+        v->discover(pi, ++timer);
+        for (int i = 0; i != v->getEdges().size(); ++i) {
+            string dest = v->getEdges()[i].dest;
+            Vertex *n = _find(dest);
             if (n->getColor() == Colors::WHITE)
                 this->_DFS(n, v);
         }
 
-        v->finish(timer++);
+        v->finish(++timer);
     }
 };
 

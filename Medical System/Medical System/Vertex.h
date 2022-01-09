@@ -44,9 +44,9 @@ private:
 
     vector<Edge> edgeList;
 
-    int d;
+    int d = -1;
 
-    int f;
+    int f = -1;
 
 public:
     Vertex(string k, vector<Edge> el) : edgeList(el), key(k) {
@@ -57,9 +57,12 @@ public:
         this->color = Color();
     }
 
-    ~Vertex() {}
+//    ~Vertex() {
+//        for (auto itr = this->edgeList.begin(); itr != this->edgeList.end(); itr++)
+//            delete *itr;
+//    }
 
-    void addEdge(Vertex *v) { edgeList.push_back(Edge(v)); }
+    void addEdge(Vertex *v) { edgeList.push_back(Edge(v->key)); }
 
     const vector<Edge> getEdges() const { return edgeList; }
 
@@ -71,8 +74,8 @@ public:
         this->color.resetColor();
         this->color.updateColor();
         this->pi = NULL;
-        this->d = 0;
-        this->f = 0;
+        this->d = -1;
+        this->f = -1;
     }
 
     void discover(Vertex *p, int time) {
@@ -89,7 +92,7 @@ public:
     void print() const {
         cout << this->key << ": ";
         for (auto itr = this->edgeList.begin(); itr != this->edgeList.end(); itr++)
-            cout << (*itr).getV()->key << ' ';
+            cout << (*itr).dest << ' ';
         cout << endl;
     }
 
