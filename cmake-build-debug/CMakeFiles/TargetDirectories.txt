@@ -1,0 +1,3 @@
+C:/Users/seyal/CLionProjects/DS/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/seyal/CLionProjects/DS/cmake-build-debug/CMakeFiles/DS.dir
+C:/Users/seyal/CLionProjects/DS/cmake-build-debug/CMakeFiles/rebuild_cache.dir
