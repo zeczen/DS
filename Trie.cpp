@@ -8,10 +8,10 @@
 * Output: int value of the variable, example: '97' -> 97.
 */
 int getNum(const char chr) {
-    if (!(97 <= (int)chr && (int)chr <= 122))
-        throw("ERROR: char not in range");
+    if (!(97 <= (int) chr && (int) chr <= 122))
+        throw ("ERROR: char not in range");
 
-    return ((int)chr) - 97;
+    return ((int) chr) - 97;
     // getNum(a): 0
     // getNum(b): 1
     // getNum(c): 2
@@ -26,9 +26,9 @@ int getNum(const char chr) {
 */
 char getChar(const int a) {
     if (!(0 <= a && a <= 26))
-        throw("ERROR: int not in range");
+        throw ("ERROR: int not in range");
 
-    return (char)a + 97;
+    return (char) a + 97;
     // getChar(0): a
     // getChar(1): b
     // getChar(2): c
@@ -45,7 +45,7 @@ Trie::TrieNode::TrieNode() {
     this->parent = NULL; // this is the root node
 }
 
-Trie::TrieNode::TrieNode(TrieNode* parent, bool isEndWord, int i) {
+Trie::TrieNode::TrieNode(TrieNode *parent, bool isEndWord, int i) {
     this->childrenCount = 0;
     this->endWord = isEndWord;
     this->parent = parent;
@@ -54,8 +54,7 @@ Trie::TrieNode::TrieNode(TrieNode* parent, bool isEndWord, int i) {
         parent->childrenCount++;
         parent->children[i] = this;
 
-    }
-    else {
+    } else {
         // if the letter already exist
 
         parent->children[i] = this;
@@ -77,7 +76,7 @@ Trie::Trie() {
 * Input: string, pointer to node in the trie (the begining value will be pointer to head), number of iteration in the function (begin with 0).
 * Output: None.
 */
-void Trie::_insert(const std::string str, TrieNode* trie, int i) {
+void Trie::_insert(const std::string str, TrieNode *trie, int i) {
     if (str.length() == i)  //if this is the last char.
     {
         trie->endWord = true; //mark as last char of the word.
@@ -89,14 +88,11 @@ void Trie::_insert(const std::string str, TrieNode* trie, int i) {
     if (trie->children[index] == NULL) //if this letter has not been used yet.
     {
         //create new TrieNode.
-        TrieNode* node = new TrieNode(trie, false, index);
+        TrieNode *node = new TrieNode(trie, false, index);
         _insert(str, node, i + 1); //conitnue the insertion process.
 
         return; //break.
-    }
-
-    else
-    {
+    } else {
         //if the letter is already exist.
         _insert(str, trie->children[index], i + 1); //conitnue the insertion process.
 
@@ -109,8 +105,7 @@ void Trie::_insert(const std::string str, TrieNode* trie, int i) {
 * Input: string, pointer to node in the trie, number of iteration (begin with 0).
 * Output: True - operation success, False - else.
 */
-bool Trie::_del(const std::string str, TrieNode* trie, int i)
-{
+bool Trie::_del(const std::string str, TrieNode *trie, int i) {
     if (str.length() == i) //if this is the last char.
     {
         trie->endWord = false;
@@ -146,20 +141,18 @@ bool Trie::_del(const std::string str, TrieNode* trie, int i)
 *
 * Output: True - if string / substring (depend on prefix flag) is found, False - else.
 */
-bool Trie::_search(const std::string str, TrieNode* trie, bool prefix, int i) {
+bool Trie::_search(const std::string str, TrieNode *trie, bool prefix, int i) {
     // O(n)
     if (i == str.length()) // if this is the last char in the string.
     {
-        if (prefix || trie->endWord) // endWord - mean that is the last char in the word, and we also that is the last char in the string.
-                                     // Therefore, we know that the string is exist in the trie. And we return True. 
-                                     // Another case is if prefix = True, and then, if we success to reach the last char in the perfix.
-                                     // It mean the prefix exist in the trie. And we return true.
+        if (prefix ||
+            trie->endWord) // endWord - mean that is the last char in the word, and we also that is the last char in the string.
+            // Therefore, we know that the string is exist in the trie. And we return True.
+            // Another case is if prefix = True, and then, if we success to reach the last char in the perfix.
+            // It mean the prefix exist in the trie. And we return true.
         {
             return true;
-        }
-
-
-        else //in every other case
+        } else //in every other case
         {
             return false; // we understand that the string / substring is not exist in the trie, and we return False.
         }
@@ -172,9 +165,7 @@ bool Trie::_search(const std::string str, TrieNode* trie, bool prefix, int i) {
     if (trie->children[index] == NULL) // if the letter isn't exist in the trie.
     {
         return false; // it mean that the string / substring is not exist in the trie, and we return False.
-    }
-
-    else // if the letter is exist in the trie.
+    } else // if the letter is exist in the trie.
     {
         return _search(str, trie->children[index], prefix, i + 1); //continue process with next letter.
     }
@@ -185,18 +176,15 @@ bool Trie::_search(const std::string str, TrieNode* trie, bool prefix, int i) {
 * Input: pointer to trie's node, prefix to start with.
 * Output: number of suggestions that found.
 */
-int Trie::_printAutoSuggestions(TrieNode* trie, std::string str) {
+int Trie::_printAutoSuggestions(TrieNode *trie, std::string str) {
     int num = 0; // how many children does this node have
-    if (trie->endWord == true)
-    {
+    if (trie->endWord == true) {
         num++;
         std::cout << str << std::endl;
     }
 
-    for (int i = 0; i < ALPHABET; i++)
-    {
-        if (trie->children[i] != NULL)
-        {
+    for (int i = 0; i < ALPHABET; i++) {
+        if (trie->children[i] != NULL) {
             char letter = getChar(i);
             num += _printAutoSuggestions(trie->children[i], str + letter);
             if (trie->children[i]->endWord == true) {
@@ -208,10 +196,8 @@ int Trie::_printAutoSuggestions(TrieNode* trie, std::string str) {
     return num;
 }
 
-void Trie::insert(std::string str)
-{
-    if (search(str))
-    {
+void Trie::insert(std::string str) {
+    if (search(str)) {
         return;
     }
 
@@ -219,32 +205,26 @@ void Trie::insert(std::string str)
 
 }
 
-bool Trie::del(const std::string str)
-{
-    if (!search(str))
-    {
+bool Trie::del(const std::string str) {
+    if (!search(str)) {
         return false;
     }
 
     return _del(str, _trie);
 }
 
-bool Trie::search(const std::string str, bool prefix)
-{
+bool Trie::search(const std::string str, bool prefix) {
     return _search(str, _trie, prefix);
 }
 
-int Trie::printAutoSuggestions(const std::string str)
-{
-    if (!search(str, true))
-    {
+int Trie::printAutoSuggestions(const std::string str) {
+    if (!search(str, true)) {
         return 0;
     }
 
-    TrieNode* node = this->_trie;
+    TrieNode *node = this->_trie;
 
-    for (int i = 0; i < str.length(); i++)
-    {
+    for (int i = 0; i < str.length(); i++) {
         node = node->children[getNum(str.at(i))];
     }
 
