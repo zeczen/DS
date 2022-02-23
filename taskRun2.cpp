@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
 #include <list>
-#include "HashTbls.h"
-#include "HashVolunteer.h"
 #include "Client.h"
 #include "Volunteer.h"
 #include "Stock.h"
